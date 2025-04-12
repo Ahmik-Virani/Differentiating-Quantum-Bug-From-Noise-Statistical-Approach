@@ -80,48 +80,6 @@ def createMutants(maxNum, operators, types, gateIDs, locationIDs, originPath, sa
 
     print("Number of mutants created: " + str(totalMutants))
 
-# def createMutants(maxNum, operators, types, gateIDs, locationIDs, originPath, savePath, all, phases):
-#     if all == True:
-#         info = getInfo(originPath)
-#         operators = ("Add", "Remove", "Replace")
-#         types = ("OneQubit", "ManyQubit")
-#         x = 1
-#         gateIDs = (x,)
-#         while x < info[2]:
-#             x = x + 1
-#             gateIDs = gateIDs + (x,)
-
-#         x = 1
-#         locationIDs = (x,)
-#         while x < (info[2] + info[0]):
-#             x = x + 1
-#             locationIDs = locationIDs + (x,)
-#         maxNum = len(QuantumGates.AllGates) * len(locationIDs) + (len(QuantumGates.AllGates) - 1) * len(gateIDs) + len(
-#             gateIDs)
-        
-#     totalMutants = 0
-#     # Group only selected type gates
-#     if "OneQubit" in types:
-#         if "ManyQubit" in types:
-#             gates = QuantumGates.AllGates
-#         else:
-#             gates = QuantumGates.OneQubit
-#     elif "ManyQubit" in types:
-#         gates = QuantumGates.TwoQubit + QuantumGates.MoreThanTwoQubit
-
-#     # Call each operator if has been selected and with it´s mutant number
-#     if "Add" in operators:
-#         addnum = maxNum
-#         totalMutants = totalMutants + add(addnum, gates, locationIDs, originPath, savePath, phases)
-#     if "Remove" in operators:
-#         removenum = maxNum
-#         totalMutants = totalMutants + remove(removenum, gates, gateIDs, originPath, savePath)
-#     if "Replace" in operators:
-#         replacenum = maxNum
-#         totalMutants = totalMutants + replace(replacenum, gates, gateIDs, originPath, savePath, phases)
-
-#     print("Number of mutants created: " + str(totalMutants))
-
 def createInputs(QubitNum):
     inputs = ("",)
     x = 0
@@ -139,148 +97,7 @@ def createInputs(QubitNum):
         x = x + 1
     return inputs[1:len(inputs)]
 
-# def executeMutants(files, resultPath, numShots, allInputs, inputs):
-#     splitChar = 92
-#     if chr(splitChar) not in resultPath:
-#         splitChar = 47
-#     tmpPath = resultPath + chr(splitChar) + "tmp.py"
-#     x = 0
-
-#     while x < len(files):
-#         Info = getInfo(files[x])
-#         QubitNum = Info[0]
-#         CircuitName = Info[1]
-#         QubitName = Info[3]
-#         ClassicName = Info[4]
-#         if allInputs == True:
-#             inputs = createInputs(QubitNum)
-
-#         for init in inputs:
-#             f = open(files[x])
-#             g = open(tmpPath, "w")
-#             g.write("from qiskit_aer import AerSimulator")
-#             g.write("\n")
-#             line = f.readline()
-#             y=0
-#             while line != "":
-#                 g.write(line)
-#                 if "QuantumCircuit" in line:
-#                     g.write("\n")
-#                     z=1
-#                     while z <= len(init):
-#                         if init[z-1]=="1":
-#                             g.write(str(CircuitName) + ".x(" + str(QubitName) + "[" + str(QubitNum-z) + "])")
-#                             g.write("\n")
-#                         z = z + 1
-#                 line = f.readline()
-#             while y < QubitNum:
-#                 g.write(
-#                     str(CircuitName) + ".measure(" + str(QubitName) + "[" + str(y) + "], " + str(ClassicName) + "[" + str(y) + "])")
-#                 g.write("\n")
-#                 y = y + 1
-#             g.write("simulator = AerSimulator()")
-#             g.write("\n")
-#             g.write("job = simulator.run(" + str(CircuitName) + ", shots=" + str(numShots) + ")")  ##execute for 10 times
-#             g.write("\n")
-#             # Grab results from the job
-#             g.write("result = job.result()")
-#             g.write("\n")
-#             # Returns counts
-#             g.write("counts = result.get_counts(" + str(CircuitName) + ")")
-#             g.write("\n")
-#             g.write("print(counts)")
-#             g.write("\n")
-#             g.write("r = open(" + chr(34) + (resultPath + chr(splitChar) + "results.txt") + chr(34) + ", " + chr(34)+ "a" + chr(34)+ ")")
-#             g.write("\n")
-#             g.write("r.write(" + chr(34)+ "The result of " + files[x] + " with input [" + str(init) +"] is: " + chr(34) + " + str(counts))")
-#             g.write("\n")
-#             g.write("r.write("+ chr(34) + chr(92) + "n"+ chr(34)+")")
-#             g.write("\n")
-#             g.write("r.close()")
-#             f.close()
-#             g.close()
-#             ops = platform.system()
-#             if "Linux" in ops:
-#                 command = "python3 " + tmpPath
-#             elif "Darwin" in ops:
-#                 command = "python3 " + tmpPath
-#             elif "Windows" in ops:
-#                 command = "Python " + tmpPath
-#             else:
-#                 print("The framework is not suported for this Operating system")
-#             os.system(command)
-#             os.remove(tmpPath)
-#         x = x + 1
-
-# import os
-# import platform
-# import subprocess
-
-# def executeMutants(files, resultPath, numShots, allInputs, inputs):
-#     tmpPath = os.path.join(resultPath, "tmp.py")
-    
-#     for file in files:
-#         Info = getInfo(file)
-#         QubitNum, CircuitName, QubitName, ClassicName = Info[0], Info[1], Info[3], Info[4]
-        
-#         if allInputs:
-#             inputs = createInputs(QubitNum)
-
-#         for init in inputs:
-#             try:
-#                 with open(file, 'r') as f, open(tmpPath, 'w') as g:
-#                     g.write("from qiskit_aer import AerSimulator\n")
-                    
-#                     for line in f:
-#                         g.write(line)
-#                         if "QuantumCircuit" in line:
-#                             g.write("\n")
-#                             for z, bit in enumerate(init, 1):
-#                                 if bit == "1":
-#                                     g.write(f"{CircuitName}.x({QubitName}[{QubitNum-z}])\n")
-                    
-#                     for y in range(QubitNum):
-#                         g.write(f"{CircuitName}.measure({QubitName}[{y}], {ClassicName}[{y}])\n")
-                    
-#                     g.write(f"""
-# simulator = AerSimulator()
-# job = simulator.run({CircuitName}, shots={numShots})
-# result = job.result()
-# counts = result.get_counts({CircuitName})
-# print(counts)
-# with open(r"{os.path.join(resultPath, 'results.txt')}", "a") as r:
-#     r.write(f"The result of {file} with input [{init}] is: {{counts}}\\n")
-# """)
-                
-#                 ops = platform.system()
-#                 if ops in ["Linux", "Darwin"]:
-#                     command = ["python3", tmpPath]
-#                 elif ops == "Windows":
-#                     command = ["python", tmpPath]
-#                 else:
-#                     print("The framework is not supported for this Operating system")
-#                     continue
-                
-#                 venv_python = r"C:\Users\devra\projects\QuantumProject\qtm\Scripts\python.exe"
-#                 command = [venv_python, tmpPath]
-
-#                 try:
-#                     subprocess.run(command, check=True, env=os.environ.copy())
-#                 except subprocess.CalledProcessError as e:
-#                     print(f"Error processing {file}: {str(e)}")
-
-            
-#             except Exception as e:
-#                 print(f"Error processing {file} with input {init}: {str(e)}")
-    
-#     os.remove(tmpPath)
-
 def executeMutants(files, resultPath, numShots, allInputs, inputs):
-    splitchar = "\\"
-    # path = resultPath.split(splitchar)
-    # fileName = path[-1]
-    # dirName = path[-2]
-    # tmpPath = os.path.join(dirName, "tmp.py")
     dirPath = os.path.dirname(resultPath)
     tmpPath = os.path.join(dirPath, "tmp.py")
 
@@ -327,17 +144,6 @@ def calculate_entropy(output_map):
 
     return entropy
 """)
-
-#                     g.write(f"""
-# simulator = AerSimulator()
-# job = simulator.run({CircuitName}, shots={numShots})
-# result = job.result()
-# counts = result.get_counts({CircuitName})
-# print(counts)
-# entropy = calculate_entropy(counts)
-# with open(r"{os.path.join(resultPath, f'{dirname}_results.txt')}", "a") as r:
-#     r.write(f"The result of {os.path.basename(file)} with input [{init}] is: {{counts}}, Entropy= {{entropy:.4f}}\\n")
-# """)
                     g.write(f"""
 simulator = AerSimulator()
 {CircuitName} = transpile({CircuitName}, simulator)
@@ -372,7 +178,6 @@ def add(max, gateTypes, locations, origin, dirPath, phases):
     splitChar = 92
     if chr(splitChar) not in origin:
         splitChar = 47
-    # dirPath = dirPath + chr(splitChar) + "AddMutations"
     os.makedirs(dirPath, exist_ok=True)
     Info = getInfo(origin)
     QubitNum = Info[0]
