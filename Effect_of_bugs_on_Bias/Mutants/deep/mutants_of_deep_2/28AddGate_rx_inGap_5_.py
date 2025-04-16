@@ -5,8 +5,8 @@ q = QuantumRegister(3, 'q')
 c = ClassicalRegister(3, 'c')
 qc = QuantumCircuit(q, c)
 
-qc.rxx(math.pi/3, q[1], q[2])
-qc.z(q[1])
-qc.id(q[1])
+qc.y(q[2])
+qc.z(q[0])
+qc.h(q[0])
 
-qc.rx(3.141592653589793,q[1])
+qc.rx(4.71238898038469,q[1])
