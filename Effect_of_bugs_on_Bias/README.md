@@ -27,26 +27,6 @@ Install dependencies with:
 pip install qiskit tqdm numpy scipy matplotlib
 ```
 
-## Repository Layout
-```
-.
-├── generate_circuits.py      # Random circuit generator
-├── create_mutants.py         # Uses muskit to mutate circuits
-├── execute_mutants.py        # Executes mutants and writes bias data
-├── analyze_bias.py           # Parses bias files & prints statistics
-├── muskit/                   # External module
-│   ├── generatorConfig.py
-│   ├── executorConfig.py
-│   └── testcases.py
-├── Testcases/
-│   ├── deep/                 # Auto‑generated deep circuits
-│   └── shallow/              # Auto‑generated shallow circuits
-├── Mutants/
-│   └── deep/                 # Generated mutant folders
-└── Bias/
-    └── deep/                 # Per‑mutant bias data files
-```
-
 ## Usage
 
 1. **Generate Random Circuits**  
