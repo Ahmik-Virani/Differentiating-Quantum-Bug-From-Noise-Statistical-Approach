@@ -8,7 +8,7 @@ This reposiratory can be divided into 2 parts:
 1. Effects of noise and bugs on bias and entropy. This consists of the following:
    - Effect of noise on Bias.ipynb
    - Effect of noise on Entropy.ipynb
-   - Effect_of_bugs_on_Entropy: _create\_distributions.ipynb_ contains code to generate the testcases, mutants and distributions of Entropy (stored in _Distributions_ directory). 
+   - Effect_of_bugs_on_Entropy
    - Effect_of_bugs_on_Bias
 2. Case Studies
    - Case Study - Grover's Algorithm.ipynb

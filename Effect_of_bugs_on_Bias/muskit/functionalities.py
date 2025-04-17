@@ -300,11 +300,7 @@ with open(r"{resultPath}", "a") as r:
     # Clean up the temporary file if it still exists.
     if os.path.exists(tmpPath):
         os.remove(tmpPath)
-
-
-
-
-
+        
 def add(max, gateTypes, locations, origin, dirPath, phases):
     splitChar = 92
     if chr(splitChar) not in origin:

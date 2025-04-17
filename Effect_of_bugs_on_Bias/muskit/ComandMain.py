@@ -46,17 +46,6 @@ if mode == "Execute":
     f.close()
     files = sys.argv[4]
     print(files)
-    # splitChar = "\\"
-    # if splitChar not in files[0]:
-    #     splitChar = chr(47)
-    # path = files[0].split(splitChar)
-    # savePath = path[0]
-    # x = 1
-    # while x < len(path) - 1:
-    #     savePath = savePath + splitChar + path[x]
-    #     x = x + 1
-    # if len(path) > 1:
-    #     savePath = savePath+ splitChar + path[-1]
     savePath = sys.argv[5]
     functionalities.executeMutants(files, savePath, numShots, allInputs, inputs)
 elif mode == "Create":
@@ -120,27 +109,6 @@ elif mode == "Create":
     f.close()
 
     file = str(sys.argv[3])
-    # print(os.getcwd())
-    # splitChar = 92
-    # if chr(splitChar) not in file:
-    #     splitChar = 47
-
-    # path = file.split(chr(splitChar))
-    # # savePath = path[0]
-    # # x = 1
-    # # while x < len(path) - 2:
-    # #     savePath = savePath + chr(splitChar) + path[x]
-    # #     x = x + 1
-    # # Extract the program name without extension
-    # program_name = path[-1].split('.')[0]
-
-    # # Create the new directory name
-    # new_dir_name = f'Mutants\\mutants_of_{program_name}'
-
-    # # # Append the new directory to savePath
-    # # savePath = savePath + chr(splitChar) + new_dir_name
-    # savePath = new_dir_name
-
     savePath = sys.argv[4]
 
     functionalities.createMutants(maxNumberOfMutants, operators, types, gateNum, location, file, savePath, allMutants, phases)
