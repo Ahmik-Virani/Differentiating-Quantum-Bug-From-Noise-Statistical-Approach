@@ -8,7 +8,7 @@ This directory contains the experiments to study the effects of bugs on the entr
 This directory has the following contents:
 
 * **_create\_distributions.ipynb_**: Contains code to generate the testcases(random quantum circuits and some algorithms), create their mutants, and store the entropies and the distribution of entropies of these mutants.
-*  **_Algos_**: Contains quantum circuits of some algorithms like Grover's, DJA and Simon's.
+*  **_Algos_**: Contains the quantum circuit of Grover's Algorithm.
 * **_Distributions_**: Contains the Probability density curves for the entropies of the mutants of each testcase.
 * **_Entropies_**: Contains the entropies of the mutants of each testcase.
 * **_muskit_**: Contains the source code of [ **`muskit`**](https://github.com/Simula-COMPLEX/muskit).
