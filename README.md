@@ -14,3 +14,25 @@ This reposiratory can be divided into 2 parts:
    - Case Study - Grover's Algorithm.ipynb
    - Case Study - Simon's Algorithm.ipynb
    - DJA_case_study.ipynb
+
+## 📄 Citation
+
+If you use this software in your research, please cite our paper:
+
+A. Virani, Devraj, A. Suresh, L. Zhang and M. V. P. Rao,  
+"Distinguishing Quantum Software Bugs from Hardware Noise: A Statistical Approach,"  
+2025 IEEE International Conference on Quantum Computing and Engineering (QCE),  
+Albuquerque, NM, USA, 2025, pp. 837–848.  
+doi: 10.1109/QCE65121.2025.00096
+
+### BibTeX
+```bibtex
+@INPROCEEDINGS{11250181,
+  author={Virani, Ahmik and Devraj and Suresh, Anirudh and Zhang, Lei and Rao, M V Panduranga},
+  booktitle={2025 IEEE International Conference on Quantum Computing and Engineering (QCE)}, 
+  title={Distinguishing Quantum Software Bugs from Hardware Noise: A Statistical Approach}, 
+  year={2025},
+  volume={01},
+  pages={837-848},
+  doi={10.1109/QCE65121.2025.00096}
+}
