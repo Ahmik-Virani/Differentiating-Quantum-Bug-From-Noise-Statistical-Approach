@@ -1,0 +1,17 @@
+```yaml
+cff-version: 1.2.0
+title: "Distinguishing Quantum Software Bugs from Hardware Noise: A Statistical Approach"
+authors:
+  - family-names: Virani
+    given-names: Ahmik
+  - family-names: Devraj
+    given-names: ""
+  - family-names: Suresh
+    given-names: Anirudh
+  - family-names: Zhang
+    given-names: Lei
+  - family-names: Rao
+    given-names: M V Panduranga
+year: 2025
+doi: 10.1109/QCE65121.2025.00096
+conference: "2025 IEEE International Conference on Quantum Computing and Engineering (QCE)"
